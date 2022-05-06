@@ -1,0 +1,246 @@
+/* Selectores Globales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+body {
+  background-color: #FEDBD0;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Titulos de todas las secciones */
+h2 {
+  color: #442C2E;
+  text-align: center;
+  margin-top: 5px;
+  padding: 5px;
+  background-color: #FEEAE6;
+}
+
+.card-title, .card {
+  background-color: #FEDBD0;
+  text-align: center;
+  padding: 10px;
+}
+
+.card {
+  background-color: #FEEAE6;
+}
+
+/* Fin selectores globales */
+/* Encabezado Web */
+header {
+  grid-area: header;
+  text-align: center;
+  background-color: #FEDBD0;
+}
+header h1 {
+  background-color: #442C2E;
+  color: #FEEAE6;
+  margin: 0;
+  padding: 10px;
+  font-size: 2rem;
+}
+
+/* Estilos del menu con Media Querie Responsive */
+nav {
+  grid-area: navbar;
+}
+nav ul {
+  list-style: none;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  nav ul {
+    display: none;
+  }
+}
+nav ul li {
+  display: inline-block;
+  padding: 20px;
+  transition: all ease-in-out 250ms;
+}
+@media (max-width: 600px) {
+  nav ul li {
+    width: 100%;
+    padding: 16px;
+    text-align: left;
+  }
+}
+nav ul li:hover {
+  background-color: #FEEAE6;
+}
+nav ul li a {
+  text-decoration: none;
+  color: #442C2E !important;
+}
+
+.hide {
+  font-size: 22px;
+  padding: 16px;
+  cursor: pointer;
+  display: none;
+}
+@media (max-width: 600px) {
+  .hide {
+    display: block;
+  }
+}
+
+/* Fin de estilos Menu */
+/* Configuracion Pie de Pagina */
+footer {
+  grid-area: footer;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background-color: #442C2E;
+  margin-bottom: 0;
+}
+footer p {
+  margin: 5px;
+  color: #FEEAE6;
+  font-size: 1rem;
+  text-align: center;
+}
+footer a {
+  color: white !important;
+}
+footer div {
+  margin: 40px;
+}
+
+.iconSocialMedia {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+}
+.iconSocialMedia:hover {
+  opacity: 0.5;
+}
+
+/* Fin configuracion Pie de Pagina */
+/* Seccion Home */
+.home-grid, .contacto-grid, .productos-grid, .servicios-grid, .empresa-grid {
+  display: grid;
+  grid-template-areas: "header" "navbar" "carousel" "slider" "footer";
+  grid-template-columns: 100%;
+  grid-template-rows: 155px auto 1fr auto;
+}
+
+/* Banner Sustentable */
+.banner {
+  grid-area: slider;
+  margin-top: 0px;
+  width: 100%;
+  height: auto;
+}
+
+/* Seccion Empresa */
+.empresa-grid {
+  grid-template-areas: "header" "navbar" "about" "footer";
+}
+
+.empresa {
+  grid-area: about;
+}
+
+/* Seccion Servicios */
+.servicios-grid {
+  grid-template-areas: "header" "navbar" "servicios" "footer";
+}
+
+.servicios {
+  grid-area: servicios;
+}
+
+/* Seccion Productos */
+.productos-grid {
+  grid-template-areas: "header" "navbar" "titulo" "productos" "footer";
+  grid-template-columns: 100%;
+  grid-template-rows: 155px auto auto 1fr auto;
+}
+
+.titulo-grid {
+  grid-area: titulo;
+}
+
+.catalogo {
+  grid-area: productos;
+  justify-content: center;
+  align-content: center;
+}
+
+/* Configuracion de la galeria */
+.contenedor-galeria {
+  grid-area: productos;
+  width: 100%;
+  margin-bottom: 25px;
+  display: flex;
+  flex-flow: row wrap;
+}
+.contenedor-galeria .contenedor-tarjeta {
+  margin: 5px;
+  perspective: 800;
+}
+.contenedor-galeria .contenedor-tarjeta .tarjeta {
+  width: 200px;
+  height: 200px;
+  background-color: #FEEAE6;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 550ms cubic-bezier(0.1, 0.22, 0.8, 1.13);
+  box-shadow: 0px 10px 15px -5px rgba(0, 0, 0, 0.65);
+}
+.contenedor-galeria .contenedor-tarjeta .tarjeta:hover {
+  transform: rotateY(180deg);
+  cursor: pointer;
+}
+.contenedor-galeria .contenedor-tarjeta .tarjeta .tarjeta-frente, .contenedor-galeria .contenedor-tarjeta .tarjeta .tarjeta-atras {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+}
+.contenedor-galeria .contenedor-tarjeta .tarjeta .tarjeta-atras {
+  transform: rotateY(180deg);
+  background-color: #FEDBD0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #442C2E;
+}
+.contenedor-galeria .contenedor-tarjeta .tarjeta .tarjeta-atras h3 {
+  text-align: center;
+  font-size: 1rem;
+  padding: 15px;
+}
+
+.img-size {
+  width: 200px;
+  height: 200px;
+}
+
+/* Seccion contacto */
+.contacto-grid {
+  grid-template-areas: "header" "navbar" "contacto" "footer";
+}
+
+.btn {
+  background-color: #442C2E;
+  color: white;
+}
+.btn:hover {
+  color: #442C2E;
+  background-color: #FEEAE6;
+}
+
+/*# sourceMappingURL=style.css.map */

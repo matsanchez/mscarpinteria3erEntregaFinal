@@ -1,0 +1,226 @@
+//Partials
+@import "colours";
+@import "global";
+@import "mediasqueries";
+
+@mixin media-querie($breackpoint){
+    @media (max-width: map-get($breackpoints, $breackpoint)){
+        @content;
+    }
+}
+    /* Encabezado Web */
+    header{
+        grid-area: header;
+        text-align: center;
+        background-color: $primarycolor;
+        h1{
+            background-color: $thirdcolor;
+            color: $secondcolor;
+            margin: 0;
+            padding: 10px;
+            font-size: 2rem;
+        }
+    }
+    /* Estilos del menu con Media Querie Responsive */
+    nav{
+        grid-area: navbar;
+        ul{
+            list-style: none;
+            text-align: center;
+            @include media-querie(sm){
+                display: none;
+            }
+            li{
+                display: inline-block;
+                padding: 20px;
+                transition: all ease-in-out 250ms;
+                @include media-querie(sm){
+                    width: 100%;
+                    padding: 16px;
+                    text-align: left;
+                }
+                &:hover{
+                    background-color: $secondcolor;
+                }
+                a{
+                    text-decoration: none;
+                    color: $thirdcolor !important;
+                    
+                }
+            }
+        }
+    }
+    .hide{
+        font-size: 22px;
+        padding: 16px;
+        cursor: pointer;
+        display: none;
+        @include media-querie(sm){
+            display: block;
+        }
+    }
+    /* Fin de estilos Menu */
+    /* Configuracion Pie de Pagina */
+    footer{
+        grid-area: footer;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        background-color: $thirdcolor;
+        margin-bottom:0;
+        p{
+            margin: 5px;
+            color: $secondcolor;
+            font-size: 1rem;
+            text-align: center;
+        }
+        a{
+            color: white !important;
+        }
+        div{
+            margin: 40px;
+        }
+    }
+    .iconSocialMedia{
+        width: 40px;
+        height: 40px;
+        margin: 5px;
+        &:hover{
+            opacity: 0.5;
+        }
+    }
+    /* Fin configuracion Pie de Pagina */
+    
+    /* Seccion Home */
+    .home-grid{
+        display: grid;
+        grid-template-areas:
+        "header"
+        "navbar"
+        "carousel"
+        "slider"
+        "footer";
+        grid-template-columns: 100%;
+        grid-template-rows: 155px auto 1fr auto;
+    }
+    /* Banner Sustentable */
+    .banner{
+        grid-area: slider;
+        margin-top: 0px;
+        width: 100%;
+        height: auto;
+    }
+    /* Seccion Empresa */
+    .empresa-grid{
+        @extend .home-grid;
+        grid-template-areas:
+        "header"
+        "navbar"
+        "about"
+        "footer";
+    }
+    .empresa{
+        grid-area: about;
+    }
+    /* Seccion Servicios */
+    .servicios-grid{
+        @extend .home-grid;
+        grid-template-areas:
+        "header"
+        "navbar"
+        "servicios"
+        "footer";
+    }
+    .servicios{
+        grid-area: servicios;
+    }
+    /* Seccion Productos */
+    .productos-grid{
+        @extend .home-grid;
+        grid-template-areas: 
+        "header"
+        "navbar"
+        "titulo"
+        "productos"
+        "footer";
+        grid-template-columns: 100%;
+        grid-template-rows: 155px auto auto 1fr auto;
+    }
+    .titulo-grid{
+        grid-area: titulo;
+    }
+    .catalogo{
+        grid-area: productos;
+        justify-content: center;
+        align-content: center;
+    }
+    /* Configuracion de la galeria */
+    .contenedor-galeria{
+        grid-area: productos;
+        width: 100%;
+        margin-bottom: 25px;
+        display: flex;
+        flex-flow: row wrap;
+        .contenedor-tarjeta{
+            margin: 5px;
+            perspective: 800;
+            .tarjeta{
+                width: 200px;
+                height: 200px;
+                background-color: $secondcolor;
+                position: relative;
+                transform-style: preserve-3d;
+                transition: all 550ms cubic-bezier(.1,.22,.8,1.13);
+                box-shadow: 0px 10px 15px -5px rgba(0,0,0,0.65);
+                &:hover{
+                    transform: rotateY(180deg);
+                    cursor: pointer;
+                }
+                .tarjeta-frente{
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    backface-visibility: hidden;
+                }
+                .tarjeta-atras{
+                    @extend .tarjeta-frente;
+                    transform: rotateY(180deg);
+                    background-color: $primarycolor;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: $thirdcolor;
+                    h3{
+                        text-align: center;
+                        font-size: 1rem;
+                        padding: 15px;
+                    }
+                }
+            }
+        }
+    }
+    .img-size{
+        width: 200px;
+        height: 200px;
+    }
+    /* Seccion contacto */
+    .contacto-grid{
+        @extend .home-grid;
+        grid-template-areas:
+        "header"
+        "navbar"
+        "contacto"
+        "footer";
+    }
+    .btn{
+        background-color: $thirdcolor;
+        color: white;
+        &:hover{
+            color: $thirdcolor;
+            background-color: $secondcolor;
+        }
+    }
